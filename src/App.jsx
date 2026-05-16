@@ -5,6 +5,7 @@ import Login from './views/Login'
 import Profile from './views/Profile'
 import ResponsiveAppBar from './components/AppBar'
 import Quiz from './views/Quiz'
+import Users from './views/Users'
 
 function App() {
   const [isLogin, setIsLogin] = useState(false)
@@ -23,6 +24,9 @@ function App() {
         />
         <Route 
           path="/quiz" element={<Quiz />} 
+        />
+        <Route 
+          path="/users" element={isLogin ? <Users /> : <Navigate to="/" />} 
         />
       </Routes>
     </BrowserRouter>

@@ -13,16 +13,16 @@ import EmailIcon from '@mui/icons-material/Email'
 import PersonIcon from '@mui/icons-material/Person'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 
-const user = {
-  name: 'John Doe',
-  initials: 'JD',
-  email: 'johndoe@email.com',
-  username: '@johndoe',
-  joinDate: 'Marzo 2024',
-  role: 'Administrador',
-}
+function Profile({ user }) {
+  const name = user?.nombre || 'Usuario'
+  const email = user?.email || 'Sin correo'
+  const initials = name
+    .split(' ')
+    .map((part) => part[0])
+    .join('')
+    .substring(0, 2)
+    .toUpperCase()
 
-function Profile() {
   return (
     <Box sx={{ p: 4, maxWidth: 500, margin: '0 auto' }}>
       <Card elevation={3}>
@@ -37,14 +37,14 @@ function Profile() {
                 fontSize: '2rem'
               }}
             >
-              {user.initials}
+              {initials}
             </Avatar>
           </Stack>
 
           <Typography variant="h5" sx={{ mt: 2, fontWeight: 700 }}>
-            {user.name}
+            {name}
           </Typography>
-          <Chip label={user.role} color="primary" size="small" sx={{ mt: 1 }} />
+          <Chip label="Usuario autenticado" color="primary" size="small" sx={{ mt: 1 }} />
 
           <Divider sx={{ my: 3 }} />
 
@@ -52,17 +52,17 @@ function Profile() {
 
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <EmailIcon color="action" />
-              <Typography color="text.secondary">{user.email}</Typography>
+              <Typography color="text.secondary">{email}</Typography>
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <PersonIcon color="action" />
-              <Typography color="text.secondary">{user.username}</Typography>
+              <Typography color="text.secondary">{user?._id}</Typography>
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <CalendarMonthIcon color="action" />
-              <Typography color="text.secondary">Miembro desde {user.joinDate}</Typography>
+              <Typography color="text.secondary">Sesion iniciada con token JWT</Typography>
             </Box>
 
           </Box>

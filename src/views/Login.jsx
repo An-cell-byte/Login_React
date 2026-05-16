@@ -9,8 +9,20 @@ function Login({onLogin}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = () => {
-    onLogin()  
+  const handleLogin = async () => {
+    const res = await fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email, password })
+    })
+    const data = await res.json()
+
+    if (res.ok) {
+      localStorage.setItem('token', data.token)
+      onLogin()
+    } else {
+      alert(data.message)
+    }
   }
 
   return (

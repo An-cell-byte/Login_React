@@ -14,12 +14,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Quiz', 'Profile'];
+const pages = ['Quiz', 'Profile', 'Users'];
 const settings = ['Logout'];
 
 const pageRoutes = {
   Quiz: '/quiz',
   Profile: '/profile',
+  Users: '/users',
 };
 
 function ResponsiveAppBar() {
