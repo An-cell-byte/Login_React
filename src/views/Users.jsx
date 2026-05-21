@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import CustomTextField from '../components/CustomTextField'
 
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
+
 function Users() {
   const [users, setUsers] = useState([])
   const [nombre, setNombre] = useState('')
@@ -11,7 +13,7 @@ function Users() {
   const token = localStorage.getItem('token')
 
   const getUsers = async () => {
-    const res = await fetch('http://localhost:5000/users', {
+    const res = await fetch(`${API_URL}/users`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     const data = await res.json()
@@ -19,7 +21,7 @@ function Users() {
   }
 
   const addUser = async () => {
-    await fetch('http://localhost:5000/users', {
+    await fetch(`${API_URL}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ function Users() {
   }
 
   const deleteUser = async (id) => {
-    await fetch(`http://localhost:5000/users/${id}`, {
+    await fetch(`${API_URL}/users/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -44,7 +46,7 @@ function Users() {
 
   useEffect(() => {
     const cargarUsuarios = async () => {
-      const res = await fetch('http://localhost:5000/users', {
+      const res = await fetch(`${API_URL}/users`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       const data = await res.json()
