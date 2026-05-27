@@ -4,7 +4,7 @@ import { useState } from 'react'
 import CustomTextField from '../components/CustomTextField'
 import LoginButton from '../components/LoginButton'
 
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8080').replace(/\/$/, '')
 
 function Login({onLogin}) {
   //const navigate = useNavigate()

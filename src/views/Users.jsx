@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import CustomTextField from '../components/CustomTextField'
 
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '')
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8080').replace(/\/$/, '')
 
 function Users() {
   const [users, setUsers] = useState([])
