@@ -44,5 +44,8 @@ If you are developing a production application, we recommend using TypeScript wi
     "password": "majope91",
     "email": "majo@hotmail.com"
 
+    "nombre": "root",
+    "password": "root",
+    "email": "root"
 
 
